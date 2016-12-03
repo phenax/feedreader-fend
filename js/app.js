@@ -131,14 +131,6 @@ $(function() {
     menuIcon.on('click', onMenuButtonClick);
 }());
 
-
-/**
- * Checks if the menu is visible
- */
-function isMenuVisible() {
-    return !$('body').hasClass('menu-hidden');
-};
-
 /**
  * Menu button click handler
  */
