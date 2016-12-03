@@ -32,6 +32,8 @@ function init() {
     loadFeed(0);
 }
 
+
+
 /* This function performs everything necessary to load a
  * feed using the Google Feed Reader API. It will then
  * perform all of the DOM operations required to display
@@ -41,8 +43,14 @@ function init() {
  * which will be called after everything has run successfully.
  */
  function loadFeed(id, cb) {
-     var feedUrl = allFeeds[id].url,
-         feedName = allFeeds[id].name;
+    var feed= allFeeds[id];
+
+    if(!feed) {
+        throw new Error("Invalid feed ID");
+    }
+
+     var feedUrl = feed.url,
+         feedName = feed.name;
 
      $.ajax({
        type: "POST",
