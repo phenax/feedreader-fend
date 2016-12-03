@@ -140,23 +140,16 @@ $(function() {
         });
 
 
-        describe('Exceptions', function() {
+        describe('Feed Exceptions', function() {
 
             it('should throw an exception when the index exceeds the length of the feed', function(done) {
 
                 var outOfBoundIndex= allFeeds.length + 1;
 
-                try {
+                expect(loadFeed.bind(window, outOfBoundIndex, done))
+                    .toThrow(new Error('Invalid feed ID'));
 
-                    // Try to load field but fail
-                    loadFeed(outOfBoundIndex, done);
-                } catch(e) {
-
-                    expect(e.message).toBe('Invalid feed ID');
-                } finally {
-
-                    done();
-                }
+                done();
             });
         });
     });
